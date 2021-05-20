@@ -10,9 +10,9 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 10;
 
-// console.log(enemyNames[0]);
-// console.log(enemyNames[1]);
-// console.log(enemyNames[2]);
+console.log(enemyNames[0]);
+console.log(enemyNames[1]);
+console.log(enemyNames[2]);
 
 // for (var i = 0; i < enemyNames.length; i++) {
 //     fight(enemyNames[i]);
@@ -20,9 +20,12 @@ var enemyAttack = 10;
 // }
 
 var fight = function(enemyName) {
+
+    while(enemyHealth > 0) {
     // Alert players that they are starting the round
-    window.alert("Welcome to Tobot Gladiators!");
- 
+
+    // window.alert("Welcome to Tobot Gladiators!");
+
     //Alert visitor if they want the battle
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose");
 
@@ -54,8 +57,11 @@ var fight = function(enemyName) {
     } else {
       window.alert(playerName + " still has " + playerHealth + " health left.");
     }
+
     // if player choses to skip
-    } else if (promptFight === "skip" || promptFight === "SKIP") {
+    while(enemyHealth > 0) {
+        fight(enemyName);
+    }    } else if (promptFight === "skip" || promptFight === "SKIP") {
     // confrim player wants to skip
     var confirmSkip = window.confirm("Are you sure you'd like to quit?");
     //if yes, leave fight
@@ -73,12 +79,16 @@ var fight = function(enemyName) {
    else {
     window.alert("You need to choose a valid option. Try again!");
   }
-};
+}
+}
 
 // run the fight function
 //fight()
 
 for (var i = 0; i < enemyNames.length; i++) {
-    fight(enemyNames[i]);
-
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;
+    fight(pickedEnemyName); 
 }
+
+fight()
