@@ -23,8 +23,14 @@ var fight = function(enemyName) {
 
     while(enemyHealth > 0) {
     // Alert players that they are starting the round
+    if (playerHealth > 0) { 
+    window.alert("Welcome to Tobot Gladiators!" + (i + 1));
 
-    // window.alert("Welcome to Tobot Gladiators!");
+    var pickedEnemyName = enemyNames[i];
+
+    enemyHealth = 50;
+    fight(pickedEnemyName);
+    }
 
     //Alert visitor if they want the battle
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose");
@@ -41,6 +47,7 @@ var fight = function(enemyName) {
     // check enemy's health
     if (enemyHealth <= 0) {
       window.alert(enemyName + " has died!");
+      break;
     } else {
       window.alert(enemyName + " still has " + enemyHealth + " health left.");
     }
@@ -54,21 +61,34 @@ var fight = function(enemyName) {
     // check player's health
     if (playerHealth <= 0) {
       window.alert(playerName + " has died!");
-    } else {
+      break;
+    }
+    
+    else {
+        window.alert("You have lost your robot in battle! Game Over!");
+        break;
+    }
+    
+    else {
       window.alert(playerName + " still has " + playerHealth + " health left.");
     }
 
     // if player choses to skip
-    while(enemyHealth > 0) {
+    while(playerHealth > 0 && enemyHealth > 0) {
         fight(enemyName);
-    }    } else if (promptFight === "skip" || promptFight === "SKIP") {
+    }    
+    
+
+    } else if (promptFight === "skip" || promptFight === "SKIP") {
     // confrim player wants to skip
     var confirmSkip = window.confirm("Are you sure you'd like to quit?");
     //if yes, leave fight
     if (confirmSkip) {
         window.alert(playerName + " has decided to skip this fight. Goodbay!");
         // penalty
-        playerMoney = playerMoney - 2;
+        playerMoney = playerMoney - 10;
+        console.log("playerMongy", playerMoney);
+        break;
     }  
     // if no, repeat question
     else {
