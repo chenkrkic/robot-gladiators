@@ -53,4 +53,5 @@ var fight = function() {
   }
 }
 
+
 fight();
