@@ -100,9 +100,6 @@ for (var i = 0; i < enemyNames.length; i++) {
     window.alert('You have lost your robot in battle! Game Over!');
     break;
   }
-
-  // play again
-  //startGame();
   endGame();
 }
 };
@@ -129,7 +126,6 @@ if (playAgainConfirm) {
 else {
 window.alert("playing Robot Gladiators! Come back soon!");
 }
-
 
 // start the game when the page loads
 startGame()
